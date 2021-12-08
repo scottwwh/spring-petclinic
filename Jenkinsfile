@@ -22,8 +22,10 @@ pipeline {
                 // sh "scp target/*.jar parallels@10.211.55.4:/opt/pet"
                 // sh "ssh parallels@10.211.55.4 'nohup java -jar /opt/pet/spring-petclinic-2.5.0-SNAPSHOT.jar &'"
 
-                sh "cp target/*.jar /opt/pet"
-                sh "nohup java -jar /opt/pet/spring-petclinic-2.5.0-SNAPSHOT.jar &"
+                // sh "cp target/*.jar /opt/pet"
+                // sh "nohup java -jar /opt/pet/spring-petclinic-2.5.0-SNAPSHOT.jar &"
+
+                sh "pwd"
             }
         }
     }
