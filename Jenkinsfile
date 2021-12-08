@@ -1,5 +1,5 @@
 pipeline {
-    agent { docker 'maven:3.8.2-jdk-11' }
+    agent { label: 'linux' }
     stages {
         // stage ('Checkout') {
         //     steps {
@@ -7,6 +7,7 @@ pipeline {
         //     }
         // }
         stage('Build') {
+            agent { docker 'maven:3.8.2-jdk-11' }
             steps {
                 sh 'mvn clean package'
                 junit '**/target/surefire-reports/TEST-*.xml'
@@ -16,7 +17,9 @@ pipeline {
         stage('Deploy') {
             steps {
                 input 'Do you approve the deployment?'
-                echo 'Deploying...'
+                // echo 'Deploying...'
+                sh "scp target/*.jar parallels@10.211.55.4:/opt/pet"
+                sh "ssh parallels@10.211.55.4 'nohup java -jar /opt/pet/spring-petclinic-2.5.0-SNAPSHOT.jar &'"
             }
         }
     }
