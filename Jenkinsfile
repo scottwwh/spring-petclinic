@@ -1,9 +1,9 @@
 pipeline {
-    agent { docker 'maven:3.5-alpine' }
+    agent { docker 'maven:3.6-alpine' }
     stages {
         // stage ('Checkout') {
         //     steps {
-        //         git 
+        //         git 'https://github.com/scottwwh/spring-petclinic.git'
         //     }
         // }
         stage('Build') {
