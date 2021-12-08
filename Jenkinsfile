@@ -1,5 +1,5 @@
 pipeline {
-    agent { docker 'docker pull maven:3.8.2-jdk-11' }
+    agent { docker 'maven:3.8.2-jdk-11' }
     stages {
         // stage ('Checkout') {
         //     steps {
